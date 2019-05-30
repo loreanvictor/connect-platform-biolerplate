@@ -49,6 +49,22 @@ platform
   });
 
 //
+// lets do some configuration from environment.
+// these configurations can be overriden via the platform.
+//
+
+//
+// lets configure the remote shell.
+//
+platform.configure({
+  'remote-shell': {
+    enabled: (process.env.CONNECT_REMOTE_SHELL_ENABLED?
+            process.env.CONNECT_REMOTE_SHELL_ENABLED.toLowerCase()=='true':false),
+    path: process.env.CONNECT_REMOTE_SHELL_PATH || undefined,
+  }
+});
+
+//
 // now lets try to load the configuration set by the panel.
 //
 try {
