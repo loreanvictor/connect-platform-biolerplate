@@ -1,0 +1,146 @@
+{
+  "path": "/samples/fact",
+  "method": "GET",
+  "public": false,
+  "in": [
+    "n"
+  ],
+  "out": [
+    "result"
+  ],
+  "configs": [],
+  "control": [],
+  "nodes": [
+    {
+      "tag": "e0",
+      "box": {
+        "left": 240,
+        "right": 412,
+        "top": 162,
+        "bottom": 410
+      },
+      "in": [
+        "n"
+      ],
+      "expr": "() => {\n  //\n  // so we want to calculate the factoriel of n using a loop.\n  // we first create the 'context' variable 'result' to store the end result, starting with 1.\n  //\n  context.result = 1;\n  \n  //\n  // then we create an array of [1, ..., n],\n  // to loop over and multiply each number into 'context.result'\n  //\n  return Array.apply(0, {length: n}).map((_, i) => (i + 1));\n}\n"
+    },
+    {
+      "tag": "c0",
+      "box": {
+        "left": 520,
+        "right": 762,
+        "top": 322,
+        "bottom": 452
+      },
+      "path": "#iterate"
+    },
+    {
+      "tag": "e1",
+      "box": {
+        "left": 538,
+        "right": 710,
+        "top": 101,
+        "bottom": 179
+      },
+      "in": [
+        "step"
+      ],
+      "expr": "step"
+    },
+    {
+      "tag": "e2",
+      "box": {
+        "left": 861,
+        "right": 1033,
+        "top": 292,
+        "bottom": 370
+      },
+      "in": [
+        "step"
+      ],
+      "expr": "context.result *= step.item;"
+    },
+    {
+      "tag": "v0",
+      "box": {
+        "left": 873,
+        "right": 1045,
+        "top": 432,
+        "bottom": 432
+      },
+      "expr": "context.result"
+    }
+  ],
+  "links": [
+    [
+      {
+        "in": "n"
+      },
+      {
+        "e0": {
+          "in": "n"
+        }
+      }
+    ],
+    [
+      {
+        "e0": "result"
+      },
+      {
+        "c0": {
+          "in": "target"
+        }
+      }
+    ],
+    [
+      {
+        "c0": {
+          "out": "step"
+        }
+      },
+      {
+        "e1": {
+          "in": "step"
+        }
+      }
+    ],
+    [
+      {
+        "e1": "result"
+      },
+      {
+        "c0": {
+          "in": "target"
+        }
+      }
+    ],
+    [
+      {
+        "c0": {
+          "out": "step"
+        }
+      },
+      {
+        "e2": {
+          "in": "step"
+        }
+      }
+    ],
+    [
+      {
+        "c0": {
+          "control": "finished"
+        }
+      },
+      "v0"
+    ],
+    [
+      {
+        "v0": "result"
+      },
+      {
+        "out": "result"
+      }
+    ]
+  ]
+}

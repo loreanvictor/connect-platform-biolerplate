@@ -1,0 +1,126 @@
+{
+  "path": "/samples/console",
+  "method": "GET",
+  "public": false,
+  "in": [],
+  "out": [],
+  "configs": [],
+  "control": [],
+  "nodes": [
+    {
+      "tag": "e0",
+      "box": {
+        "left": 253,
+        "right": 425,
+        "top": 269,
+        "bottom": 269
+      },
+      "expr": "console.log('--- A ---')"
+    },
+    {
+      "tag": "e1",
+      "box": {
+        "left": 453,
+        "right": 625,
+        "top": 261,
+        "bottom": 339
+      },
+      "in": [
+        "result"
+      ],
+      "expr": "console.log('--- B ---')"
+    },
+    {
+      "tag": "e2",
+      "box": {
+        "left": 700,
+        "right": 872,
+        "top": 216,
+        "bottom": 294
+      },
+      "in": [
+        "result"
+      ],
+      "expr": "console.log('--- C[1] ---')"
+    },
+    {
+      "tag": "e3",
+      "box": {
+        "left": 704,
+        "right": 876,
+        "top": 424,
+        "bottom": 502
+      },
+      "in": [
+        "result"
+      ],
+      "expr": "console.log('--- C[2] ---')"
+    },
+    {
+      "tag": "e4",
+      "box": {
+        "left": 925,
+        "right": 1097,
+        "top": 366,
+        "bottom": 535
+      },
+      "in": [
+        "x",
+        "y"
+      ],
+      "expr": "console.log(`Click on the \"Shell\" button in the header, \nand run the following command:`);\n\nconsole.log('tail -f /var/log/platform/');\n"
+    }
+  ],
+  "links": [
+    [
+      {
+        "e0": "result"
+      },
+      {
+        "e1": {
+          "in": "result"
+        }
+      }
+    ],
+    [
+      {
+        "e1": "result"
+      },
+      {
+        "e2": {
+          "in": "result"
+        }
+      }
+    ],
+    [
+      {
+        "e1": "result"
+      },
+      {
+        "e3": {
+          "in": "result"
+        }
+      }
+    ],
+    [
+      {
+        "e2": "result"
+      },
+      {
+        "e4": {
+          "in": "x"
+        }
+      }
+    ],
+    [
+      {
+        "e3": "result"
+      },
+      {
+        "e4": {
+          "in": "y"
+        }
+      }
+    ]
+  ]
+}

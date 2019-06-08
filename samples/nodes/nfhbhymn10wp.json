@@ -1,0 +1,137 @@
+{
+  "path": "/samples/f-n-f",
+  "method": "GET",
+  "public": true,
+  "in": [
+    "n"
+  ],
+  "out": [
+    "result"
+  ],
+  "configs": [],
+  "control": [],
+  "nodes": [
+    {
+      "tag": "e0",
+      "box": {
+        "left": 239,
+        "right": 411,
+        "top": 157,
+        "bottom": 235
+      },
+      "in": [
+        "n"
+      ],
+      "expr": "n * 1"
+    },
+    {
+      "tag": "c0",
+      "box": {
+        "left": 489,
+        "right": 731,
+        "top": 249,
+        "bottom": 353
+      },
+      "path": "/samples/fib"
+    },
+    {
+      "tag": "c1",
+      "box": {
+        "left": 496,
+        "right": 738,
+        "top": 387,
+        "bottom": 491
+      },
+      "path": "/samples/fact"
+    },
+    {
+      "tag": "e1",
+      "box": {
+        "left": 838,
+        "right": 1010,
+        "top": 215,
+        "bottom": 395
+      },
+      "in": [
+        "n",
+        "fib",
+        "fact"
+      ],
+      "expr": "{\n  [`fib(${n})`]: fib,\n  [`${n}!`]: fact,\n}"
+    }
+  ],
+  "links": [
+    [
+      {
+        "in": "n"
+      },
+      {
+        "e0": {
+          "in": "n"
+        }
+      }
+    ],
+    [
+      {
+        "e0": "result"
+      },
+      {
+        "c0": {
+          "in": "n"
+        }
+      }
+    ],
+    [
+      {
+        "e0": "result"
+      },
+      {
+        "c1": {
+          "in": "n"
+        }
+      }
+    ],
+    [
+      {
+        "e0": "result"
+      },
+      {
+        "e1": {
+          "in": "n"
+        }
+      }
+    ],
+    [
+      {
+        "c0": {
+          "out": "result"
+        }
+      },
+      {
+        "e1": {
+          "in": "fib"
+        }
+      }
+    ],
+    [
+      {
+        "c1": {
+          "out": "result"
+        }
+      },
+      {
+        "e1": {
+          "in": "fact"
+        }
+      }
+    ],
+    [
+      {
+        "e1": "result"
+      },
+      {
+        "out": "result"
+      }
+    ]
+  ]
+}

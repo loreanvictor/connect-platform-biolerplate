@@ -1,0 +1,239 @@
+{
+  "path": "/samples/fib",
+  "method": "GET",
+  "public": false,
+  "in": [
+    "n"
+  ],
+  "out": [
+    "result"
+  ],
+  "configs": [],
+  "control": [],
+  "nodes": [
+    {
+      "tag": "s0",
+      "box": {
+        "left": 319,
+        "right": 463,
+        "top": 59,
+        "bottom": 234
+      },
+      "cases": [
+        "1",
+        "2",
+        "..."
+      ]
+    },
+    {
+      "tag": "v0",
+      "box": {
+        "left": 838,
+        "right": 1010,
+        "top": 80,
+        "bottom": 80
+      },
+      "expr": "1"
+    },
+    {
+      "tag": "v1",
+      "box": {
+        "left": 812,
+        "right": 984,
+        "top": 140,
+        "bottom": 140
+      },
+      "expr": "1"
+    },
+    {
+      "tag": "e0",
+      "box": {
+        "left": 273,
+        "right": 445,
+        "top": 277,
+        "bottom": 355
+      },
+      "in": [
+        "n"
+      ],
+      "expr": "n - 1"
+    },
+    {
+      "tag": "e1",
+      "box": {
+        "left": 278,
+        "right": 450,
+        "top": 446,
+        "bottom": 524
+      },
+      "in": [
+        "n"
+      ],
+      "expr": "n - 2"
+    },
+    {
+      "tag": "c0",
+      "box": {
+        "left": 573,
+        "right": 815,
+        "top": 239,
+        "bottom": 343
+      },
+      "path": "/samples/fib"
+    },
+    {
+      "tag": "c1",
+      "box": {
+        "left": 488,
+        "right": 730,
+        "top": 426,
+        "bottom": 530
+      },
+      "path": "/samples/fib"
+    },
+    {
+      "tag": "e2",
+      "box": {
+        "left": 785,
+        "right": 957,
+        "top": 411,
+        "bottom": 515
+      },
+      "in": [
+        "a",
+        "b"
+      ],
+      "expr": "a + b"
+    }
+  ],
+  "links": [
+    [
+      {
+        "in": "n"
+      },
+      {
+        "s0": "target"
+      }
+    ],
+    [
+      {
+        "s0": {
+          "case": "1"
+        }
+      },
+      "v0"
+    ],
+    [
+      {
+        "s0": {
+          "case": "2"
+        }
+      },
+      "v1"
+    ],
+    [
+      {
+        "v0": "result"
+      },
+      {
+        "out": "result"
+      }
+    ],
+    [
+      {
+        "v1": "result"
+      },
+      {
+        "out": "result"
+      }
+    ],
+    [
+      {
+        "in": "n"
+      },
+      {
+        "e0": {
+          "in": "n"
+        }
+      }
+    ],
+    [
+      {
+        "e0": "result"
+      },
+      {
+        "c0": {
+          "in": "n"
+        }
+      }
+    ],
+    [
+      {
+        "in": "n"
+      },
+      {
+        "e1": {
+          "in": "n"
+        }
+      }
+    ],
+    [
+      {
+        "e1": "result"
+      },
+      {
+        "c1": {
+          "in": "n"
+        }
+      }
+    ],
+    [
+      {
+        "c0": {
+          "out": "result"
+        }
+      },
+      {
+        "e2": {
+          "in": "a"
+        }
+      }
+    ],
+    [
+      {
+        "c1": {
+          "out": "result"
+        }
+      },
+      {
+        "e2": {
+          "in": "b"
+        }
+      }
+    ],
+    [
+      {
+        "e2": "result"
+      },
+      {
+        "out": "result"
+      }
+    ],
+    [
+      {
+        "s0": {
+          "case": "..."
+        }
+      },
+      "c0"
+    ],
+    [
+      {
+        "s0": {
+          "case": "..."
+        }
+      },
+      "c1"
+    ]
+  ]
+}

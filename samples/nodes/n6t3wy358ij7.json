@@ -1,0 +1,48 @@
+{
+  "path": "/samples/hello",
+  "method": "GET",
+  "public": true,
+  "in": [
+    "name"
+  ],
+  "out": [
+    "result"
+  ],
+  "configs": [],
+  "control": [],
+  "nodes": [
+    {
+      "tag": "e0",
+      "box": {
+        "left": 618,
+        "right": 790,
+        "top": 387,
+        "bottom": 465
+      },
+      "in": [
+        "name"
+      ],
+      "expr": "\"hellow \" + name"
+    }
+  ],
+  "links": [
+    [
+      {
+        "in": "name"
+      },
+      {
+        "e0": {
+          "in": "name"
+        }
+      }
+    ],
+    [
+      {
+        "e0": "result"
+      },
+      {
+        "out": "result"
+      }
+    ]
+  ]
+}
