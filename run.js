@@ -2,8 +2,16 @@ const fs = require('fs');
 const ncp = require('ncp');
 const nodemon = require('nodemon');
 
-const prepare = () => new Promise(resolve => {
+const checkSamples = () => new Promise(resolve => {
   fs.exists('./panel-generated', exists => {
+    if (!exists) resolve(false);
+    else
+      fs.readdir('./panel-generated', (err, files) => resolve(files.length > 0));
+  })
+});
+
+const prepare = () => new Promise(resolve => {
+  checkSamples().then(exists => {
     if (exists) resolve();
     else {
       console.log('==> POPULATING SAMPLES');
