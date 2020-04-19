@@ -25,10 +25,13 @@ const run = () => {
   nodemon({
     script: 'index.js',
     signal: "SIGTERM"
+  })
+  .on('start', () => console.log('starting the platform...'))
+  .on('crash', () => process.exit(0))
+  .on('exit', () => {
+    console.log('exiting...')
+    process.exit(0)
   });
-
-  nodemon.on('start', () => console.log('starting the platform ...'));
-  nodemon.on('crash', () => process.exit(0));
 }
 
 prepare().then(run);
