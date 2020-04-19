@@ -1,5 +1,15 @@
 const platform = require('connect-platform');
 
+
+let exposePanel = true;
+
+if(
+  process.env.CONNECT_PANEL_HIDE &&
+  process.env.CONNECT_PANEL_HIDE.toLowerCase() === 'true'
+) {
+  exposePanel = false;
+}
+
  //
  // lets configure the platform with some presets.
  //
@@ -20,7 +30,7 @@ platform
     // lets expose the panel to be able to access it.
     //
     panel: {
-      expose: true
+      expose: exposePanel
     },
 
     //
