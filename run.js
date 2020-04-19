@@ -22,7 +22,10 @@ const prepare = () => new Promise(resolve => {
 
 const run = () => {
   console.log('==> RUNNING PLATFORM');
-  nodemon({ script: 'index.js' });
+  nodemon({
+    script: 'index.js',
+    signal: "SIGTERM"
+  });
 
   nodemon.on('start', () => console.log('starting the platform ...'));
   nodemon.on('crash', () => process.exit(0));
