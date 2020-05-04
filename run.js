@@ -22,7 +22,13 @@ const prepare = () => new Promise(resolve => {
 
 const run = () => {
   console.log('==> RUNNING PLATFORM');
-  nodemon({ script: 'index.js' })
+  nodemon({
+    script: '--require',
+    args: [
+      'dotenv/config',
+      'index.js'
+    ]
+  })
   .on('start', () => console.log('starting the platform...'))
   .on('crash', () => process.exit(0));
 
