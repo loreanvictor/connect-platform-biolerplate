@@ -3,6 +3,11 @@ const platform = require('connect-platform');
 
 let exposePanel = true;
 
+let port = 4000;
+if( process.env.CONNECT_PORT ) {
+  port = process.env.CONNECT_PORT;
+}
+
 if(
   process.env.CONNECT_PANEL_HIDE &&
   process.env.CONNECT_PANEL_HIDE.toLowerCase() === 'true'
@@ -24,7 +29,7 @@ platform
     // run it by default on port 4000. you can also change this value
     // from within the panel.
     //
-    port: 4000,
+    port: port,
 
     //
     // lets expose the panel to be able to access it.
