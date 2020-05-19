@@ -140,6 +140,7 @@ if (process.env.CONNECT_INSTANCE_AUTO_SLEEP)
     instance_auto_sleep: process.env.CONNECT_INSTANCE_AUTO_SLEEP
   });
 
+platform.autoparseFromEnvironmentVars();
 //
 // finally, start the platform.
 //
