@@ -99,18 +99,24 @@ try {
 // also load the production config overrides.
 //
 try {
-  if (process.env.CONNECT_PRODUCTION_MODE) {
+  if (process.env.CONNECT_PRODUCTION_MODE && process.env.CONNECT_PRODUCTION_MODE.toLocaleLowerCase() === 'true') {
     let prodconf = require('./panel-generated/platform-config.prod');
     platform.configure(prodconf);
   }
+} catch(err) {
+  console.error(err);
+}
 
+try {
   if (process.env.CONNECT_ENABLE_SOCKET && process.env.CONNECT_ENABLE_SOCKET.toLocaleLowerCase() === 'true') {
     console.info('Enabling sockets');
     platform.configure({
       enable_sockets: true
     });
   }
-} catch(err) {}
+} catch(err) {
+  console.error(err);
+}
 
 //
 // set a secret for panel if dictated by the environment variables.
